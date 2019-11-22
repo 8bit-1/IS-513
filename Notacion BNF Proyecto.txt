@@ -1,0 +1,54 @@
+<programa>::-<conjunto_instrucciones>
+
+<conjunto_instrucciones>::-<instruccion>|<conjunto_instrucciones><instruccion>
+<instruccion>::- <imprimir>|<declararacion_variable>|<asignacion_valor>|<leer>|<ciclo>|<seleccion>|<goto>
+
+<imprimir>::- 'imprimir'<nombre_variable>|'imprimir'<cadena>|<imprimir>'+'<cadena>|<imprimir>'+'<nombre_variable>
+
+<declararacion_variable>::-'definir'<nombre_variable><tipo_dato>
+
+<asignacion_valor>::- <nombre_variable>'<-'<entero>|<nombre_variable>'<-'<cadena>|<nombre_variable>'<-'<asignacion>
+
+<nombre_variable>::- <caracter_M>|<nombre_variable><caracter>|<nombre_variable><digito>
+
+<asignacion>::- <nombre_variable><subAsignacion>|<real><subAsignacion>|<asignacion><subAsignacion>
+
+<subAsignacion>::-<operador_aritmetico><real>|<operador_aritmetico><nombre_variable>
+
+<leer>::- 'leer'<nombre_variable>
+
+<ciclo>::-<repetir>|<mientras>
+
+<repetir>::- 'repetir'<conjunto_instrucciones>'hasta'<condicion>
+
+<mientras>::-'mientras'<condicion><conjunto_instrucciones>'repetir'
+
+<seleccion>::-'si'<condicion>'hacer'<conjunto_instrucciones>'finsi'|'si'<condicion>'hacer'<conjunto_instrucciones>'sino'<conjunto_instrucciones>'finsi'
+
+<condicion>::- <nombre_variable><operador_relacion><nombre_variable>|<digito><operador_relacion><digito>|<nombre_variable><operador_relacion><digito>|<digito><operador_relacion><nombre_variable>|<cadena>'=='<cadena>|<cadena>'!='<cadena>
+
+<goto>::- 'cursor'<entero>,<entero>
+
+<tipo_dato>::-<entero>|<decimal>|<cadena>
+
+<entero>::- <digito>|'-'<digito>|<entero><digito>
+
+<decimal>::- <entero>'.'<entero_P>
+
+<entero_P>::-<digito>|<entero><digito>
+
+<cadena>::- '"'<scadena>'"'
+
+<scadena>::- <caracter>|<digito>|<scadena><caracter>|<scadena><digito>
+
+<real>::- <entero>|<decimal>
+
+<operador_aritmetico>::- '+'|'-'|'*'|'/'
+
+<operador_relacion>::- '<'|'>'|'<='|'>='|'=='|'!='
+
+<caracter_M>::-'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'
+
+<caracter>::-'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'|'a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'|'l'|'m'|'n'|'o'|'p'|'q'|'r'|'s'|'t'|'u'|'v'|'w'|'x'|'y'|'z'
+
+<digito>::- '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'
