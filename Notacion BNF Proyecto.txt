@@ -9,7 +9,7 @@
 
 <asignacion_valor>::- <nombre_variable>'<-'<entero>|<nombre_variable>'<-'<cadena>|<nombre_variable>'<-'<asignacion>
 
-<nombre_variable>::- <caracter_M>|<nombre_variable><caracter>|<nombre_variable><digito>
+<nombre_variable>::- <caracter_M>|<caracter_M><scadena>
 
 <asignacion>::- <nombre_variable><subAsignacion>|<real><subAsignacion>|<asignacion><subAsignacion>
 
@@ -19,11 +19,13 @@
 
 <ciclo>::-<repetir>|<mientras>
 
-<repetir>::- 'repetir'<conjunto_instrucciones>'hasta'<condicion>
+<repetir>::- 'repetir' '{' <conjunto_instrucciones> '}' 'hasta' '(' <condicion> ')'
 
-<mientras>::-'mientras'<condicion><conjunto_instrucciones>'repetir'
+<mientras>::-'mientras' '(' <condicion> ')' 'repetir' '{' <conjunto_instrucciones> '}'
 
-<seleccion>::-'si'<condicion>'hacer'<conjunto_instrucciones>'finsi'|'si'<condicion>'hacer'<conjunto_instrucciones>'sino'<conjunto_instrucciones>'finsi'
+<seleccion>::- <subSeleccion> 'finsi' | <subSeleccion> 'sino' <conjunto_instrucciones>'finsi'
+
+<subSeleccion>::- 'si' '(' <condicion> ')' 'hacer' <conjunto_instrucciones>
 
 <condicion>::- <nombre_variable><operador_relacion><nombre_variable>|<digito><operador_relacion><digito>|<nombre_variable><operador_relacion><digito>|<digito><operador_relacion><nombre_variable>|<cadena>'=='<cadena>|<cadena>'!='<cadena>
 
@@ -35,7 +37,7 @@
 
 <decimal>::- <entero>'.'<entero_P>
 
-<entero_P>::-<digito>|<entero><digito>
+<entero_P>::-<digito>|<entero_P><digito>
 
 <cadena>::- '"'<scadena>'"'
 
