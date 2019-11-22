@@ -1,0 +1,48 @@
+<programa>::-'{'<instrucciones>'}'
+TODO bien de aqui hacia abajo
+
+<nombre_variable>::- <caracter_M>|<nombre_variable><caracter>|<nombre_variable><digito>
+<caracter_M>::-'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'
+<caracter>::-'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'|'a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'|'l'|'m'|'n'|'o'|'p'|'q'|'r'|'s'|'t'|'u'|'v'|'w'|'x'|'y'|'z'
+<digito>::- '0'|'1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'
+
+<declararacion_variable>::-'definir'<nombre_variable><tipo_dato>
+<tipo_dato>::-<entero>|<decimal>|<cadena>
+<entero>::- <digito>|'-'<digito>|<entero><digito>
+<decimal>::- <entero>'.'<entero_P>
+<entero_P>::-<digito>|<entero><digito>
+<cadena>::- <comilla><scadena><comilla>
+<scadena>::- <caracter>|<digito>|<scadena><caracter>|<scadena><digito>
+<comilla>::- '"'
+
+<ciclo>::-<repetir>|<mientras>
+<repetir>::- 'repetir'<instrucciones>'hasta'<condicion>
+<mientras>::-'mientras'<condicion><instrucciones>'repetir'
+<seleccion>::-'si'<condicion>'hacer'<instrucciones>'finsi'|'si'<condicion>'hacer'<instrucciones>'sino'<instrucciones>'finsi'
+
+
+<instrucciones>::- <goto>|<imprimir>|<declararacion_variable>|<asignacion_valor>|<leer>|<ciclo>|<instrucciones><imprimir>|<instrucciones><declararacion_variable>|<instrucciones><asignacion_valor>|<instrucciones><leer>|<instrucciones><ciclo>|<instrucciones><goto>
+
+<condicion>::- <nombre_variable><operador_relacion><nombre_variable>|<digito><operador_relacion><digito>|<cadena>'=='<cadena>|<cadena>'!='<cadena>
+
+<operador_relacion>::- '<'|'>'|'<='|'>='|'=='|'!='
+
+<imprimir>::- 'imprimir'<nombre_variable>|'imprimir'<cadena>|<imprimir>'+'<cadena>|<imprimir>'+'<nombre_variable>
+
+<asignacion_valor>::- <nombre_variable>'<-'<entero>|<nombre_variable>'<-'<cadena>|<nombre_variable>'<-'<suma>
+
+<suma>::- <nombre_variable><operador><nombre_variable>|<suma><operador><nombre_variable>|<real><operador><real>|<suma><operador><real>
+<real>::- <entero>|<decimal>
+<operador>::- '+'|'-'|'*'
+<leer>::- 'leer'<nombre_variable>
+
+<goto>::- 'cursor'<entero>,<entero>
+
+
+
+
+
+
+
+
+
