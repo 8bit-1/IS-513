@@ -9,9 +9,8 @@ void Buscar();
 //variable globales
 char *palabrasReservadas[] = {"definir","repetir","mientras","hasta","fin","finsi","si"};
 int tamPalabrasReservadas=sizeof(palabrasReservadas)/sizeof(char *);
-
+int i;
 int estado=0;
-int i=0;
 char identificador[100];
 char temp[2];
 
@@ -21,6 +20,7 @@ int main( )
    FILE *fp ;
    
    printf( "Opening the file test.c in read mode\n" ) ;
+   
    fp = fopen ( "data.txt", "r" ) ; // opening an existing file
    char caracter;
       if ( fp == NULL )
@@ -119,8 +119,8 @@ void analizar(char c){
 		}	
 	//operador Aritmetico
 	if(c=='+'||c=='/'||c=='*'){
-		if(estado==0){estado=10;}else{printf("Error aritmetico");}
-		//printf("<operador aritmetico>");
+		if(estado==0){estado=10;}else{printf("Error aritmetico");exit(-1);}
+		
 		}
 	//operador relacional
 	
@@ -141,7 +141,7 @@ void analizar(char c){
 		 if(estado==0){estado=8;}
 		 else if(estado==8){estado=9;}else if(estado==11){estado=13;}
 		 else if(estado==14){estado=15;}
-		 else{printf("error =");}
+		 else{printf("error =");exit(-1);}
 		}
 	if(c=='!'){
 		if(estado==0){estado=8;}else{printf("\n error !");exit(-1);} 
