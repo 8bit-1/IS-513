@@ -1,5 +1,5 @@
 {
 definir A;
-A <- 4;
+A <- -4.2;
 mientras(A < 3)
 }
