@@ -19,10 +19,11 @@ int estado=0; 		 //el estado del programa que definira que esta permitido y que 
 int main( )
 {
 	char caracter;
+    FILE *fp2;
 	FILE *fp ;
-	printf( "Opening the file test.c in read mode\n" ) ;
-   
-	fp = fopen ( "data.txt", "r" ) ; // opening an existing file
+	printf( "Opening the file in read mode\n" ) ;
+    fp2 = fopen("DataOut.txt", "wt");
+	fp =  fopen ( "data.txt", "r" ) ; // opening an existing file
    
      if ( fp == NULL ){
      printf ( "Could not open file data.txt \n" ) ;
@@ -42,10 +43,10 @@ int main( )
 	  analizar(caracter);
 	  
 	  switch(caracter){
-		  case '{':printf("<Tkn_corcheteA>");break;
-		  case '}':printf("<Tkn_corcheteC>");break;
-		  case '(':printf("<Tkn_parentesisA>");break;
-		  case ')':printf("<Tkn_parentesisC>");break;
+		  case '{':printf("<Tkn_corcheteA>"); fputs("<Tkn_corcheteA>",fp2); break;
+		  case '}':printf("<Tkn_corcheteC>"); fputs("<Tkn_corcheteC>",fp2); break;
+		  case '(':printf("<Tkn_parentesisA>");fputs("<Tkn_parentesisA>",fp2);break;
+		  case ')':printf("<Tkn_parentesisC>");fputs("<Tkn_parentesisC>",fp2);break;
 		
 		  }
 	  i++;
