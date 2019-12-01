@@ -15,15 +15,16 @@ char temp[2]; 			 //aqui guardaremos un caracter a la ves, y se concatena al arr
 int tamPalabrasReservadas=sizeof(palabrasReservadas)/sizeof(char *); //sizeof() devuelve el tamano en bytes que abarca la variable 
 int i;				 //maneja el numero de ciclos de la funcion
 int estado=0; 		 //el estado del programa que definira que esta permitido y que no
+FILE *fp2;
 
 int main( )
 {
 	char caracter;
-    FILE *fp2;
+    
 	FILE *fp ;
 	printf( "Opening the file in read mode\n" ) ;
     fp2 = fopen("DataOut.txt", "wt");
-	fp =  fopen ( "data.txt", "r" ) ; // opening an existing file
+	fp =  fopen ( "data.txt", "r" ) ; //abriendo un  archivo existente
    
      if ( fp == NULL ){
      printf ( "Could not open file data.txt \n" ) ;
@@ -43,10 +44,10 @@ int main( )
 	  analizar(caracter);
 	  
 	  switch(caracter){
-		  case '{':printf("<Tkn_corcheteA>"); fputs("<Tkn_corcheteA>",fp2); break;
-		  case '}':printf("<Tkn_corcheteC>"); fputs("<Tkn_corcheteC>",fp2); break;
-		  case '(':printf("<Tkn_parentesisA>");fputs("<Tkn_parentesisA>",fp2);break;
-		  case ')':printf("<Tkn_parentesisC>");fputs("<Tkn_parentesisC>",fp2);break;
+		  case '{':fputs("<Tkn_corcheteA>\n",fp2); break;
+		  case '}':fputs("<Tkn_corcheteC>\n",fp2); break;
+		  case '(':fputs("<Tkn_parentesisA>\n",fp2);break;
+		  case ')':fputs("<Tkn_parentesisC>\n",fp2);break;
 		
 		  }
 	  i++;
@@ -56,9 +57,14 @@ int main( )
 }
 
 void buscar(){
+	char temp1[20]="<Tkn_";
+	char temp2[5]=">\n";
 	for(int i=0;i<tamPalabrasReservadas;i++){
 		if(strcmp(palabrasReservadas[i],identificador)==0){
-			printf("<Tkn_%s>",palabrasReservadas[i]);
+			//printf("<Tkn_%s>",palabrasReservadas[i]);
+			strcat(temp1,palabrasReservadas[i]);
+			strcat(temp1,temp2);
+			fputs(temp1,fp2);
 			identificador[0]='\0';
 			break;
 			}
@@ -69,24 +75,24 @@ void buscar(){
 void Estado(){
 	switch(estado){
 			//en el caso de ser un numero, analizamos si tiene un menos antes, con eso sabremos si es positivo o negativo
-			case 1: if(idNum[0]=='-'){printf("<Tkn_numeroNegativo>");idNum[0]='\0';}else printf("<Tkn_numero>"); estado=0;break;
-			case 2: if(idNum[0]=='-'){printf("<Tkn_numeroNegativo>");idNum[0]='\0';}else printf("<Tkn_numero>");estado=0;break;
-			case 4: if(idNum[0]=='-'){printf("<Tkn_decimalNegativo>");idNum[0]='\0';}else printf("<Tkn_Decimal>");estado=0;break;
+			case 1: if(idNum[0]=='-'){fputs("<Tkn_numeroNegativo>\n",fp2);idNum[0]='\0';}else fputs("<Tkn_numero>\n",fp2); estado=0;break;
+			case 2: if(idNum[0]=='-'){fputs("<Tkn_numeroNegativo>\n",fp2);idNum[0]='\0';}else fputs("<Tkn_numero>\n",fp2);estado=0;break;
+			case 4: if(idNum[0]=='-'){fputs("<Tkn_decimalNegativo>\n",fp2);idNum[0]='\0';}else fputs("<Tkn_Decimal>\n",fp2);estado=0;break;
 			
 			//cuando detectamos un identificador, revisamos si esta en la tabla de palabras reservadas
 			case 5:buscar();estado=0; break;
 			
-			case 6:printf("<Tkn_variable>"); estado=0;break;
-			case 7:printf("<Tkn_variable>");estado=0;break;
-			case 9:printf("<Tkn_operadorRelacional>");estado=0;break;
-			case 10:printf("<Tkn_operadorAritmetico>");estado=0;break;
-			case 11:printf("<Tkn_operadorMQ>");estado=0;break;
-			case 12:printf("<Tkn_Asignador>");estado=0;break;
-			case 13:printf("<Tkn_MenorIgualQ>");estado=0;break;
-			case 14:printf("<Tkn_MayorQ>");estado=0;break;
-			case 15:printf("<Tkn_MayorIgualQ>");estado=0;break;	
-			case 16:printf("<Tkn_OperadorMenos>");estado=0;break;	
-			case 18:printf("<Tkn_Cadena>");estado=0;break;	
+			case 6:fputs("<Tkn_variable>\n",fp2); estado=0;break;
+			case 7:fputs("<Tkn_variable>\n",fp2);estado=0;break;
+			case 9:fputs("<Tkn_operadorRelacional>\n",fp2);estado=0;break;
+			case 10:fputs("<Tkn_operadorAritmetico>\n",fp2);estado=0;break;
+			case 11:fputs("<Tkn_operadorMQ>\n",fp2);estado=0;break;
+			case 12:fputs("<Tkn_Asignador>\n",fp2);estado=0;break;
+			case 13:fputs("<Tkn_MenorIgualQ>\n",fp2);estado=0;break;
+			case 14:fputs("<Tkn_MayorQ>\n",fp2);estado=0;break;
+			case 15:fputs("<Tkn_MayorIgualQ>\n",fp2);estado=0;break;	
+			case 16:fputs("<Tkn_OperadorMenos>\n",fp2);estado=0;break;	
+			case 18:fputs("<Tkn_Cadena>\n",fp2);estado=0;break;	
 			}
 	}
 

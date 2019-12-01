@@ -1,1 +1,15 @@
-<Tkn_corcheteA><Tkn_parentesisA><Tkn_parentesisC><Tkn_corcheteC>
+<Tkn_corcheteA>
+<Tkn_definir>
+<Tkn_variable>
+<Tkn_variable>
+<Tkn_operadorRelacional>
+<Tkn_decimalNegativo>
+<Tkn_operadorAritmetico>
+<Tkn_numero>
+<Tkn_mientras>
+<Tkn_parentesisA>
+<Tkn_variable>
+<Tkn_operadorMQ>
+<Tkn_numero>
+<Tkn_parentesisC>
+<Tkn_corcheteC>
