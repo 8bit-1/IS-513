@@ -1,12 +1,12 @@
 <Tkn_corcheteA>
-<Tkn_definir>
+<Tkn_palabraReservadadefinir>
 <Tkn_variable>
 <Tkn_variable>
 <Tkn_operadorRelacional>
 <Tkn_decimalNegativo>
 <Tkn_operadorAritmetico>
 <Tkn_numero>
-<Tkn_mientras>
+<Tkn_palabraReservadamientras>
 <Tkn_parentesisA>
 <Tkn_variable>
 <Tkn_operadorMQ>

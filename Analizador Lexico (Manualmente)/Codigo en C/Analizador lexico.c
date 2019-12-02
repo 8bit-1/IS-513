@@ -8,7 +8,7 @@ void Estado();			//verifica el estado y retorna su valor debido
 void Buscar();			//compara  identificador con palabrasReservadas, retorna la palabra si la encuentra, error de lo contrario
 
 //variable globales
-char *palabrasReservadas[] = {"definir","repetir","mientras","hasta","fin","finsi","si","imprimir"};
+char *palabrasReservadas[] = {"definir","repetir","mientras","hasta","leer","finsi","si","imprimir","goto","sino","hacer"};
 char identificador[100];
 char idNum[2];				//aqui guardaremos el signo "-" para verificar si un numero es positivo o negativo
 char temp[2]; 			 //aqui guardaremos un caracter a la ves, y se concatena al array identificador
@@ -57,7 +57,7 @@ int main( )
 }
 
 void buscar(){
-	char temp1[20]="<Tkn_";
+	char temp1[30]="<Tkn_palabraReservada";
 	char temp2[5]=">\n";
 	for(int i=0;i<tamPalabrasReservadas;i++){
 		if(strcmp(palabrasReservadas[i],identificador)==0){
