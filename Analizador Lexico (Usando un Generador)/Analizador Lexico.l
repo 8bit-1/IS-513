@@ -2,24 +2,28 @@
 se usa de la siguiente forma:
 1) ./<ejecutable>.out <nombre_archivo> ejmplo: ./analizador.out programa.prg
 2) ./<ejecutable>.out ejemplo: ./analizador.out
-
-En el numeral 1 se pasa un archivo de texto, en el 2do no y la entrada es via teclado
 */
 
 %{
-/* se necesita esto para la llamada a atof() más abajo */
 #include <math.h>
 #include<stdio.h>
-void Salir();
 %}
 
 EnteroPositivo      [0-9]*
+EnteroNegativo2     ([-][0-9]+[^A-za-z\.])
 EnteroNegativo      (-[0-9]*)
 DecimalPositivo     [0-9]*\.[0-9]*
-DecimalNegativo     -[0-9]*\.[0-9]* 
-Variable       ([A-Z]){1}([0-9a-z])*
-Variable2      (\b)(([A-Z]){1}([0-9a-z])*(?=\W))
+DecimalNegativo     -[0-9]*\.[0-9]*
 
+/*Variable       ([A-Z]){1}([0-9a-z])* */
+
+Variable3       ([^A-Za-z0-9\.\-\=\+])([A-Z]{1}[0-9a-z]*)[^A-Z\.\-\/]
+
+/*Variable2      (\b)(([A-Z]){1}([0-9a-z])*(?=\W))*/
+
+Asignador       (<-)
+
+Cadena         \"([^"]*)\"
 
 %%
 
@@ -27,9 +31,12 @@ Variable2      (\b)(([A-Z]){1}([0-9a-z])*(?=\W))
 {DecimalNegativo}     fputs("Tkn_DecimalN\n",yyout);
 
 {EnteroPositivo}      fputs("Tkn_EnteroP\n",yyout);
-{EnteroNegativo}      fputs("Tkn_EnteroN\n",yyout);
+{EnteroNegativo2}      fputs("Tkn_EnteroN\n",yyout);
 
-{Variable2}   {fputs("Tkn_Variable\n",yyout);} 
+{Variable3}   {fputs("Tkn_Variable\n",yyout); }
+{Asignador}     fputs("Tkn_Asignador\n",yyout);
+
+{Cadena}        fputs("Tkn_Cadena\n",yyout);
 
 definir|repetir|mientras|hasta|finsi|si|sino|imprimir|goto|leer|hacer  {
                     fputs("Tkn_PalabraReservada\n",yyout);
@@ -43,13 +50,14 @@ definir|repetir|mientras|hasta|finsi|si|sino|imprimir|goto|leer|hacer  {
 "("     fputs("Tkn_ParentesisA\n",yyout);
 ")"     fputs("Tkn_ParentesisC\n",yyout);
 
+
 ; /*hacer nada*/
 
-"{"[^}\n]*"}"     /* se come una linea de comentarios */
 
-[ \t\n]+          /*  se come los espacios en blanco */
 
-.           printf( "Caracter no reconocido: %s\n", yytext );
+[ \t]+          /*  se come los espacios en blanco */
+
+.           {printf( "Caracter no reconocido: %s\n", yytext );fputs("Error: ",yyout);fputs(yytext,yyout);fputs("\n",yyout);}
 
 %%
 
