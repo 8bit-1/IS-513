@@ -1,11 +1,15 @@
 {
 definir Hola;
-A == -4.2 + 34 + 6.4 ;
-mientras( A <- -3 ){ A <- A + 1}
+definir A;
+A <- 5;
+Hola == -4.2 + 34 + 6.4 ;
+mientras( A < -3 )repetir{ A <- A - 1}
 leer A;
 
 definir Alo;
-imprimir A;
-imprimir "lenguajes con 100%";
+si( A > 5)hacer{imprimir  "lenguajes con 100%"; };
+
+Alo <- "POO vs PE";
+imprimir Alo;
 
 }

@@ -2,6 +2,12 @@ Tkn_CorcheteA
 
 Tkn_PalabraReservada
 Tkn_Variable
+
+Tkn_PalabraReservada
+Tkn_Variable
+Tkn_Variable
+Tkn_Asignador
+Tkn_EnteroP
 Tkn_Variable
 Tkn_OperadorRelacional
 Tkn_DecimalN
@@ -13,9 +19,10 @@ Tkn_DecimalP
 Tkn_PalabraReservada
 Tkn_ParentesisA
 Tkn_Variable
-Tkn_Asignador
+Tkn_OperadorRelacional
 Tkn_EnteroN
 Tkn_ParentesisC
+Tkn_PalabraReservada
 Tkn_CorcheteA
 Tkn_Variable
 Tkn_Asignador
@@ -27,16 +34,28 @@ Tkn_CorcheteC
 Tkn_PalabraReservada
 Tkn_Variable
 
-Tkn_Variable
 
 Tkn_PalabraReservada
 Tkn_Variable
-Tkn_PalabraReservada
-Tkn_PalabraReservada
 
+Tkn_PalabraReservada
+Tkn_ParentesisA
+Tkn_Variable
+Tkn_OperadorRelacional
+Tkn_EnteroP
+Tkn_ParentesisC
+Tkn_PalabraReservada
+Tkn_CorcheteA
 Tkn_PalabraReservada
 Tkn_Cadena
+Tkn_CorcheteC
 
+Tkn_Variable
+Tkn_Asignador
+Tkn_Cadena
+
+Tkn_PalabraReservada
+Tkn_Variable
 
 
 Tkn_CorcheteC
